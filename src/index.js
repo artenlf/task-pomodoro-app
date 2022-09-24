@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./styles/globalStyles.css";
 import Column from "./components/Column/Column.jsx";
 import initialData from "./initial-data/initial-data.js";
 
