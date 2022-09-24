@@ -3,6 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 
 function Task(props) {
   const Container = styled.div`
+    background-color: var(--dark-blue);
     border: 1px solid var(--light-grey);
     border-radius: 0.7rem;
     margin-bottom: 0.5rem;
