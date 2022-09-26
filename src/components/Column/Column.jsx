@@ -16,9 +16,15 @@ const Title = styled.h3`
   padding: 0.5rem;
 `;
 const TaskList = styled.div`
+  background-color: ${(props) => (props.isDraggingOver ? "var(--medium-blue)" : "var(--darker-blue)")};
+  border-radius: inherit;
+  box-sizing: border-box;
   color: var(--green);
-  margin: 0.5rem 2rem;
-  padding: 0.5rem;
+  height: 100%;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+  width: 100%;
 `;
 
 function Column(props) {
@@ -26,8 +32,8 @@ function Column(props) {
     <Container>
       <Title>{props.column.title}</Title>
       <Droppable droppableId={props.column.id}>
-        {(provided) => (
-          <TaskList ref={provided.innerRef} {...provided.droppableProps}>
+        {(provided, snapshot) => (
+          <TaskList {...provided.droppableProps} ref={provided.innerRef} isDraggingOver={snapshot.isDraggingOver}>
             {props.tasks.map((task, index) => (
               <Task key={task.id} task={task} index={index} />
             ))}

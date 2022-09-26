@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 
 function Task(props) {
   const Container = styled.div`
-    background-color: var(--dark-blue);
+    background-color: ${(props) => (props.isDragging ? "var(--medium-light-blue)" : "var(--dark-blue)")};
     border: 1px solid var(--light-grey);
     border-radius: 0.7rem;
     margin-bottom: 0.5rem;
@@ -12,8 +12,8 @@ function Task(props) {
 
   return (
     <Draggable draggableId={props.task.id} index={props.index}>
-      {(provided) => (
-        <Container {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+      {(provided, snapshot) => (
+        <Container {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} isDragging={snapshot.isDragging}>
           {props.task.content}
         </Container>
       )}
